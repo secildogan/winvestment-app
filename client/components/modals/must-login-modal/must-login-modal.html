@@ -1,0 +1,127 @@
+<div class="modal fade" id="must-login-modal" role="dialog">
+  <div class="modal-dialog" style="max-width: 700px;">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <div ng-cloak>
+          <md-content>
+            <md-tabs md-dynamic-height md-border-bottom md-selected="0" center-tabs md-stretch-tabs="always">
+              <md-tab label="{{ 'GİRİŞ YAP' | translate }}">
+                <md-content class="md-padding">
+
+                  <div layout="column">
+                    <form class="form" name="login_form" ng-submit="login(login_form)" novalidate>
+
+                      <div layout="row" layout-align="center center">
+                        <div layout="column" layout-align="center" flex>
+
+                          <md-input-container>
+                            <label translate>Email</label>
+                            <input required type="email" name="email" ng-model="login_user.email"
+                                  ng-pattern="/^.+@.+\..+$/" />
+
+                            <div ng-messages="login_form.email.$error" role="alert">
+                              <div ng-message="pattern" ng-class="{ 'hidden': !login_form.email.$error.pattern }" translate>Lütfen geçerli bir email adresi girin.</div>
+                              <div ng-message="required" ng-class="{ 'hidden': !login_form.email.$error.required }" translate>Lütfen email adresinizi girin.</div>
+                            </div>
+                          </md-input-container>
+
+                          <md-input-container>
+                            <label translate>Şifre</label>
+                            <input type="password" name="password" ng-model="login_user.password" required>
+
+                            <div ng-messages="login_form.password.$error" role="alert">
+                              <div ng-message="required" ng-class="{ 'hidden': !login_form.password.$error.required }" translate>Lütfen şifrenizi giriniz.</div>
+                            </div>
+
+                          </md-input-container>
+
+                          <p class="help-block">{{ login_errors.other }}</p>
+
+                          <md-button class="md-raised md-primary" style="width: 180px;" type="submit"><span translate>Giriş yap</span></md-button>
+                          <oauth-buttons classes="md-raised" align-buttons="row"></oauth-buttons>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                </md-content>
+              </md-tab>
+              <md-tab label="{{ 'ÜYE OL' | translate }}">
+                <md-content class="md-padding">
+                  <div layout="column">
+                    <form class="form" name="signup_form" ng-submit="register(signup_form)" novalidate>
+
+                      <div layout="row" layout-align="center center">
+                        <div layout="column" layout-align="center" flex>
+
+                          <div layout="row">
+                            <md-input-container flex class="md-margin">
+                              <label translate>Adınız, Soyadınız</label>
+                              <input type="text" name="name" ng-model="signup_user.name" required>
+
+                              <div ng-messages="signup_form.name.$error" role="alert">
+                                <div ng-message="required" ng-class="{ 'hidden': !signup_form.name.$error.required }" translate>Lütfen adınızı ve soyadınızı yazınız.</div>
+                              </div>
+                            </md-input-container>
+                          </div>
+
+                          <div layout="row">
+                            <md-input-container flex class="md-margin">
+                              <label translate>Email adresiniz</label>
+                              <input type="email" name="email" ng-model="signup_user.email"
+                              ng-pattern="/^.+@.+\..+$/" mongoose-error required>
+
+                              <div ng-messages="signup_form.email.$error">
+                                <div ng-message="required" ng-class="{ 'hidden': !signup_form.email.$error.required }" translate>Email adresi girmeniz gereklidir.</div>
+                                <div ng-message="pattern" ng-class="{ 'hidden': !signup_form.email.$error.pattern }" translate>Lütfen geçerli bir email adresi giriniz.</div>
+                                <div ng-message="mongoose-error" ng-class="{ 'hidden': !signup_form.email.$error.mongoose }">{{ signup_errors.email }}</div>
+                              </div>
+
+                            </md-input-container>
+
+                            <md-input-container flex class="md-margin">
+                              <label translate>Telefon numaranız</label>
+                              <input type="text" name="phone" ng-model="signup_user.phone">
+                            </md-input-container>
+                          </div>
+
+
+                         <div layout="row">
+                           <md-input-container flex class="md-margin">
+                             <label translate>Şifreniz</label>
+                             <input type="password" name="password" ng-model="signup_user.password" minlength="6" mongoose-error required>
+
+                             <div ng-messages="signup_form.password.$error" role="alert">
+                               <div ng-message-exp="['required', 'minlength']" ng-class="{ 'hidden': !signup_form.password.$error.required && !signup_form.password.$error.minlength }" translate>Şifreniz en az 6 karakterden oluşmalıdır.</div>
+                               <div ng-message="'mongoose-error'" ng-class="{ 'hidden': !signup_form.password.$error.mongoose }">{{ signup_errors.password }}</div>
+                             </div>
+                           </md-input-container>
+
+
+                           <md-input-container flex class="md-margin">
+                             <label translate>Tekrar şifreniz</label>
+                             <input type="password" name="confirmPassword" ng-model="signup_user.confirmPassword" match="signup_user.password" required>
+
+                             <div ng-messages="signup_form.confirmPassword.$error" role="alert">
+                               <div ng-message="match" ng-class="{ 'hidden': !signup_form.confirmPassword.$error.match }" translate>Girdiğiniz şifreler eşleşmiyor.</div>
+                             </div>
+                           </md-input-container>
+                         </div>
+
+
+                          <md-button class="md-raised md-primary" style="width: 180px;" type="submit"><span translate>Üye ol</span></md-button>
+                          <oauth-buttons classes="md-raised" align-buttons="row"></oauth-buttons>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </md-content>
+              </md-tab>
+            </md-tabs>
+          </md-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

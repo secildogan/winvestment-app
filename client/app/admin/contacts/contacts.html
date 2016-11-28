@@ -1,0 +1,48 @@
+<navbar></navbar>
+
+<section class="admin-dashboard">
+  <div class="container pb50 pt20">
+    <md-content class="md-padding">
+      <md-nav-bar md-selected-nav-item="'contacts'" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="/admin/submissions" name="submissions"><span translate>Talepler</span></md-nav-item>
+        <md-nav-item md-nav-href="/admin/users" name="users"><span translate>Kullanıcılar</span></md-nav-item>
+        <md-nav-item md-nav-href="/admin/contacts" name="contacts"><span translate>İletişim formları</span></md-nav-item>
+      </md-nav-bar>
+    </md-content>
+
+    <ul class="list-group">
+      <li class="list-group-item static" ng-repeat="c in data.items.items">
+        <div class="row">
+          <div class="col-sm-3">
+            <span class="text-insignificant"><span translate>Adı-Soyadı</span>: </span><span>{{ c.name }}</span><br>
+            <span class="text-insignificant"><span translate>Email</span>: </span><span>{{ c.email }}</span><br>
+          </div>
+          <br class="visible-xs">
+          <div class="col-sm-3">
+            <span class="text-insignificant"><span translate>Oluşturulma tarihi</span>: </span><span>{{ c.created_at | amDateFormat:'DD.MM.YYYY | HH:MM' }}</span><br>
+            <span class="text-insignificant"><span translate>Telefon numarası</span>: </span><span>{{ c.phone }}</span>
+          </div>
+          <br class="visible-xs">
+          <div class="col-sm-6">
+            <span class="text-insignificant" translate>Bırakılan mesaj</span><br>
+            <span>{{ c.message }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="text-center" ng-if="data.items.found">
+      <uib-pagination total-items="data.items.found"
+      items-per-page="data.items.count"
+      ng-model="data.params.page"
+      ng-change="search({ page: data.params.page })"
+      max-size="4"
+      boundary-links="true"
+      rotate="false"
+      first-text="{{ 'İlk' | translate }}"
+      previous-text="{{ 'Önceki' | translate }}"
+      next-text="{{ 'Sonraki' | translate }}"
+      last-text="{{ 'Son' | translate }}"></uib-pagination>
+    </div>
+  </div>
+</section>

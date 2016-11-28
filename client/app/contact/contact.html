@@ -1,0 +1,79 @@
+<navbar></navbar>
+
+<section class="contact-form pt30 pb30">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h1 class="text-center mb30" translate>Bize dilediğiniz zaman ulaşabilirsiniz!</h1>
+      </div>
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="row">
+          <div class="col-sm-7">
+            <form class="form" name="form" ng-submit="submit(form)" novalidate>
+              <div class="col-xs-12">
+                <md-input-container class="md-block">
+                  <label translate>Adınız, Soyadınız</label>
+                  <input required type="text" name="name" ng-model="contact.name"/>
+
+                  <div ng-messages="form.name.$error" role="alert">
+                    <div ng-message="required" ng-class="{ 'hidden': !form.name.$error.required }" translate>Lütfen adınızı ve soyadınızı yazınız.</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div class="col-xs-12">
+                <md-input-container class="md-block">
+                  <label translate>Email adresiniz</label>
+                  <input required type="email" name="email" ng-model="contact.email" ng-pattern="/^.+@.+\..+$/"/>
+
+                  <div ng-messages="form.email.$error" role="alert">
+                    <div ng-message="pattern" ng-class="{ 'hidden': !form.email.$error.pattern }" translate>Lütfen geçerli bir email adresi giriniz.</div>
+                    <div ng-message="required" ng-class="{ 'hidden': !form.email.$error.required }" translate>Lütfen email adresinizi giriniz.</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div class="col-xs-12">
+                <md-input-container class="md-block">
+                  <label translate>Telefon numaranız</label>
+                  <input type="text" name="phone" ng-model="contact.phone"/>
+                </md-input-container>
+              </div>
+              <div class="col-xs-12">
+                <md-input-container class="md-block">
+                  <label translate>İletmek istediğiniz mesaj</label>
+                  <textarea ng-model="contact.message" md-maxlength="700" rows="4" name="message" md-select-on-focus required></textarea>
+
+                  <div ng-messages="form.name.$error" role="alert">
+                    <div ng-message="required" ng-class="{ 'hidden': !form.message.$error.required }" translate>Lütfen iletmek istediğiniz mesajı yazınız.</div>
+                  </div>
+                </md-input-container>
+              </div>
+              <div class="col-xs-12 mb50">
+                <md-button class="md-raised md-primary pull-right" type="submit">
+                  <span translate>Gönder</span>
+                </md-button>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-5">
+            <div class="hidden-xs mb150"></div>
+            <span class="fa fa-map-marker h5 text-center" style="width:20px"></span>
+            <strong>19 Mayıs Mah. 19 Mayıs Cad. Golden Plaza 34360</strong>
+            <br>
+            <span class="fa" style="width:20px"></span>
+            <strong>Şişli/İstanbul</strong>
+            <br>
+            <h5>
+              <span style="width:20px;" class="fa fa-envelope text-center"></span>
+              <strong>
+                <a href="mailto:support@winvestment.net" class="text-primary">support@winvestment.net</a>
+              </strong>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<footer></footer>

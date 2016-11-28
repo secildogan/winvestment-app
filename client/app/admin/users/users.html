@@ -1,0 +1,36 @@
+<navbar></navbar>
+
+<section class="admin-dashboard">
+  <div class="container pb50 pt20">
+    <md-content class="md-padding">
+      <md-nav-bar md-selected-nav-item="'users'" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="/admin/submissions" name="submissions"><span translate>Talepler</span></md-nav-item>
+        <md-nav-item md-nav-href="/admin/users" name="users"><span translate>Kullanıcılar</span></md-nav-item>
+        <md-nav-item md-nav-href="/admin/contacts" name="contacts"><span translate>İletişim formları</span></md-nav-item>
+      </md-nav-bar>
+    </md-content>
+
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="user in data.items.items" ng-click="userDetails(user)">
+        <strong>{{ user.name }}</strong><br>
+        <span class="text-muted">{{ user.email }}</span>
+      </li>
+    </ul>
+
+    <div class="text-center" ng-if="data.items.found">
+      <uib-pagination total-items="data.items.found"
+      items-per-page="data.items.count"
+      ng-model="data.params.page"
+      ng-change="search({ page: data.params.page })"
+      max-size="4"
+      boundary-links="true"
+      rotate="false"
+      first-text="{{ 'İlk' | translate }}"
+      previous-text="{{ 'Önceki' | translate }}"
+      next-text="{{ 'Sonraki' | translate }}"
+      last-text="{{ 'Son' | translate }}"></uib-pagination>
+    </div>
+  </div>
+</section>
+
+<admin-user-details-modal user="selected"></admin-user-details-modal>

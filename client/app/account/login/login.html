@@ -1,0 +1,40 @@
+<navbar></navbar>
+
+<div class="container pt50 pb50 mt50">
+  <div layout="column">
+    <form class="form" name="form" ng-submit="login(form)" novalidate>
+
+      <div layout="row" layout-align="center center">
+        <div layout="column" layout-align="center" flex-sm="70" flex-xs="80" flex-gt-sm="40">
+          <h1 translate>Giriş yap</h1>
+
+          <md-input-container>
+            <label translate>Email</label>
+            <input required type="email" name="email" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" />
+
+            <div ng-messages="form.email.$error" role="alert">
+              <div ng-message="pattern" ng-class="{ 'hidden': !form.email.$error.pattern }" translate>Lütfen geçerli bir email adresi giriniz.</div>
+              <div ng-message="required" ng-class="{ 'hidden': !form.email.$error.required }" translate>Lütfen email adresinizi giriniz.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container>
+            <label translate>Şifre</label>
+            <input type="password" name="password" ng-model="user.password" required>
+
+            <div ng-messages="form.password.$error" role="alert">
+              <div ng-message="required" ng-class="{ 'hidden': !login_form.password.$error.required }" translate>Lütfen şifrenizi giriniz.</div>
+            </div>
+          </md-input-container>
+
+          <p class="help-block mt-5"><span class="text-danger">{{ errors.other | translate }}</span></p>
+
+          <md-button class="md-raised md-primary" style="width: 200px;" type="submit"><span translate>Giriş yap</span></md-button>
+          <oauth-buttons classes="md-raised" align-buttons="row"></oauth-buttons>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer></footer>

@@ -1,0 +1,41 @@
+<div class="navbar navbar-default navbar-fixed-top mb0" ng-controller="NavbarCtrl">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" data-target=".navbar-collapse" style="border-radius: 2px;">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand p5">
+        <img class="img-responsive pull-left" style="height: 40px;" ng-src="/assets/images/logo_f8_green.jpg" alt="winvestment">
+        <span class="h3 p20" style="line-height: 1.75;"><span class="logo-win"></span>WINVESTMENT</span>
+      </a>
+    </div>
+    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin/users') || isActive('/admin/submissions') || isActive('/admin/contacts')}"><a href="/admin/submissions" translate>Yönetici</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <md-select ng-model="locale" aria-label="true" class="md-no-underline mt0 mb0 pt10 pb10">
+            <md-option value="tr">&nbsp;&nbsp;&nbsp;Türkçe</md-option>
+            <md-option value="en">&nbsp;&nbsp;&nbsp;English</md-option>
+          </md-select>
+        </li>
+        <li><span><md-button class="md-raised md-primary" href="/submit/{{ locale }}"><span translate>Yeni talep</span></md-button></span></li>
+        <li ng-class="{active: isActive('/faq')}"><a href="/faq" translate>S.S.S.</a></li>
+        <li ng-class="{active: isActive('/contact')}"><a href="/contact" translate>İletişim</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup" translate>Üye ol</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login" translate>Giriş yap</a></li>
+        <!-- <li ng-class="{active: isActive('/creditTools')}"><a href="/creditTools" translate>Kredi Araçları</a></li> -->
+        <li ng-if="refreshUserName" ng-show="isLoggedIn()">
+          <md-select ng-model="$parent.profile" md-selected-text="hello + ' ' + getCurrentUser().name" aria-label="true" class="md-no-underline mt0 mb0 pt10 pb10 profile-select">
+            <md-option value="/settings"><span translate>Ayarlar</span></md-option>
+            <md-option value="/logout"><span translate>Çıkış</span></md-option>
+          </md-select>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

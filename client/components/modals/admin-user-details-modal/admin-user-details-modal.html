@@ -1,0 +1,25 @@
+<div class="modal fade" id="admin-user-details-modal" role="dialog">
+  <div class="modal-dialog" style="max-width: 700px;">
+    <div class="modal-content">
+      <div class="modal-body p30">
+        <h3 class="mt0 pull-left"><strong>{{ user.name }}</strong></h3>
+        <h5 class="mt5 pull-right text-insignificant">{{ user.role }}</h5>
+        <span class="clearfix"></span>
+        <hr class="mt10 mb10">
+        <h5><span class="text-insignificant"><span translate>Email adresi</span>:</span> {{ user.email }}</h5>
+        <h5><span class="text-insignificant"><span translate>Telefon numarası</span>:</span> {{ user.phone }}</h5>
+        <h5><span class="text-insignificant"><span translate>Üyelik tarihi</span>:</span> {{ user.created_at | amDateFormat:'DD.MM.YYYY' }}</h5>
+        <span class="clearfix"></span>
+        <hr class="mt10 mb10">
+        <h4 uib-tooltip="{{ 'Notu düzenle' | translate }}" class="pull-right"><a href="#" ng-click="editNotes()"><span class="fa fa-pencil-square-o md-primary"></span></a></h4>
+        <h5><span class="text-insignificant"><span translate>Notlar</span> <span class="fa fa-info-circle text-insignificant" uib-tooltip="{{ 'Yalnızca yöneticiler görebilir.' | translate }}"></span>:</span> {{ user.admin_notes }}</h5>
+        <md-input-container ng-show="showEditNotes" class="md-block mb0">
+          <textarea ng-model="newNotes" md-maxlength="250" rows="1" md-select-on-focus aria-label="true"></textarea>
+          <span class="clearfix"></span>
+          <md-button ng-click="saveNotes()" class="md-raised md-primary pull-right mt20"><span translate>Kaydet</span></md-button>
+          <md-button ng-click="showEditNotes = false" class="md-raised md-default pull-right mt20"><span translate>İptal</span></md-button>
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+</div>

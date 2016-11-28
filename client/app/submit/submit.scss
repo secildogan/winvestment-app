@@ -1,0 +1,64 @@
+.demo-legend {
+  color: $c1;
+  width: inherit;
+  border-bottom: none;
+  font-size: 18px;
+}
+
+#submissionForm {
+  md-select .md-select-value.md-select-placeholder {
+    border-bottom-color: rgba(229, 0, 0, 0.5);
+  }
+
+  md-select .md-select-value.md-select-placeholder {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  
+  md-input-container:not(.md-input-has-value) input:not(:focus) {
+    border-bottom-color: rgba(229, 0, 0, 0.5);
+  }
+}
+
+.demo-fieldset {
+  border: 1px solid rgba(0,0,0,0.1);
+  height: 100%;
+}
+
+.demo-select-all-checkboxes {
+  padding-left: 30px;
+}
+
+.md-datepicker-button {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  width: 25px !important;
+  &.md-button:not([disabled]).md-focused {
+    background: none;
+  }
+  .md-datepicker-calendar-icon {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
+
+.md-icon-button + .md-datepicker-input-container {
+  margin-left: 5px;
+}
+
+.blurry {
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+.sharp {
+  -webkit-filter: blur(0) !important;
+  -moz-filter: blur(0) !important;
+  -o-filter: blur(0) !important;
+  -ms-filter: blur(0) !important;
+  filter: blur(0) !important;
+}

@@ -1,0 +1,49 @@
+<div class="modal fade" id="admin-submission-details-modal" role="dialog">
+  <div class="modal-dialog" style="width: 90%;">
+    <div class="modal-content">
+      <div class="modal-body p30">
+        <h4 class="mt0 mb15"><strong><span translate>Talep</span> id:</strong> {{ submission._id }}</h4>
+        <h5><span class="text-insignificant"><span translate>Adı-Soyadı</span>:</span> {{ submission.by.name }}</h5>
+        <h5><span class="text-insignificant"><span translate>Email adresi</span>:</span> {{ submission.by.email }}</h5>
+        <h5><span class="text-insignificant"><span translate>Telefon numarası</span>:</span> {{ submission.by.phone }}</h5>
+        <span class="clearfix"></span>
+        <hr class="mt10 mb10">
+        <div class="row">
+          <div class="col-xs-6">
+            <h5><span class="text-insignificant"><span translate>Oluşturulma tarihi</span>:</span> {{ submission.created_at | amDateFormat:'DD.MM.YYYY | HH:MM' }} </h5>
+            <h5><span class="text-insignificant"><span translate>Şehir</span>:</span> {{ submission.city }}</h5>
+            <h5><span class="text-insignificant"><span translate>Semt</span>:</span> {{ array2String(submission.districts) }}</h5>
+            <h5><span class="text-insignificant"><span translate>Mahalle</span>:&nbsp;</span>
+              <span ng-repeat=" (k, v) in submission.neighborhoods">
+              {{ k }}&nbsp;<span class="text-insignificant">(<span ng-if="v.indexOf('::' + k) > -1">Tümü</span><span ng-if="v.indexOf('::' + k) === -1"><span ng-repeat="n in v">{{ n }}<span ng-if="!$last">,&nbsp;</span></span></span>)<span ng-if="!$last">, </span></span>
+              </span>
+            </h5>
+            <h5><span class="text-insignificant">{{ specs.realty_types.label }}:</span> <span ng-repeat="d in submission.realty_types">{{ getLabelByKey('realty_types', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+            <h5><span class="text-insignificant">{{ specs.room_counts.label }}:</span> <span ng-repeat="d in submission.room_counts">{{ d }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+            <h5><span class="text-insignificant"><span translate>Fiyat aralığı</span>:</span> {{ addDots(submission.price.min) }} &#8378; - {{ addDots(submission.price.max) }} &#8378;</h5>
+            <h5><span class="text-insignificant">m:&#xB2;</span> {{ submission.area.min }} m&#xB2; - {{ submission.area.max }} m&#xB2;</h5>
+          </div>
+          <div class="col-xs-6">
+
+            <h5><span class="text-insignificant">{{ specs.floors.label }}:</span> <span ng-repeat="d in submission.floors">{{ getLabelByKey('floors', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+            <h5><span class="text-insignificant">{{ specs.musts.label }}:</span> <span ng-repeat="d in submission.musts">{{ getLabelByKey('musts', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+            <h5><span class="text-insignificant">{{ specs.building_types.label }}:</span> <span ng-repeat="d in submission.building_types">{{ getLabelByKey('building_types', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+            <h5><span class="text-insignificant">{{ specs.building_ages.label }}:</span> <span ng-repeat="d in submission.building_ages">{{ getLabelByKey('building_ages', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+            <h5><span class="text-insignificant"><span translate>Tarih aralığı</span>:</span> {{ submission.dates.min | amDateFormat:'DD.MM.YYYY' }} - {{ submission.dates.max | amDateFormat:'DD.MM.YYYY' }}</h5>
+            <h5><span class="text-insignificant"><span translate>Ek açıklamalar</span>:</span> {{ submission.user_notes }}</h5>
+          </div>
+        </div>
+        <span class="clearfix"></span>
+        <hr class="mt10 mb10">
+        <h4 uib-tooltip="{{ 'Notu düzenle' | translate }}" class="pull-right"><a href="#" ng-click="editNotes()"><span class="fa fa-pencil-square-o md-primary"></span></a></h4>
+        <h5><span class="text-insignificant"><span translate>Notlar</span> <span class="fa fa-info-circle text-insignificant" uib-tooltip="{{ 'Yalnızca yöneticiler görebilir.' | translate }}"></span>:</span> {{ submission.admin_notes }}</h5>
+        <md-input-container ng-show="showEditNotes" class="md-block mb0">
+          <textarea ng-model="newNotes" md-maxlength="250" rows="1" md-select-on-focus aria-label="true"></textarea>
+          <span class="clearfix"></span>
+          <md-button ng-click="saveNotes()" class="md-raised md-primary pull-right mt20"><span translate>Kaydet</span></md-button>
+          <md-button ng-click="showEditNotes = false" class="md-raised md-default pull-right mt20"><span translate>İptal</span></md-button>
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+</div>

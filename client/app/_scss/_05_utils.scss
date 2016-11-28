@@ -1,0 +1,190 @@
+.m0 { margin: 0px !important }
+.m5 { margin: 5px }
+.m10 { margin: 10px }
+.m15 { margin: 15px }
+.m20 { margin: 20px }
+.p0 { padding: 0px !important }
+.p5 { padding: 5px }
+.p10 { padding: 10px }
+.p15 { padding: 15px }
+.p20 { padding: 20px }
+.p30 { padding: 30px }
+
+// top
+.mt0 { margin-top: 0 !important }
+.mt-5 { margin-top: -5px }
+.mt5 { margin-top: 5px }
+.mt10 { margin-top: 10px }
+.mt10i { margin-top: 10px !important }
+.mt-10 { margin-top: -10px }
+.mt-100 { margin-top: -100px }
+.mt15 { margin-top: 15px }
+.mt20 { margin-top: 20px }
+.mt20i { margin-top: 20px !important }
+.mt30 { margin-top: 30px }
+.pt0 { padding-top: 0 !important }
+.pt5 { padding-top: 5px }
+.pt10 { padding-top: 10px }
+.pt15 { padding-top: 15px }
+.pt20 { padding-top: 20px }
+.pt30 { padding-top: 30px }
+.pt50 { padding-top: 50px }
+.pt100 { padding-top: 100px }
+.pt150 { padding-top: 150px }
+
+// bottom
+.mb0 { margin-bottom: 0 !important }
+.mb-5 { margin-bottom: -5px }
+.mb-20 { margin-bottom: -20px }
+.mb5 { margin-bottom: 5px }
+.mb10 { margin-bottom: 10px }
+.mb15 { margin-bottom: 15px }
+.mb20 { margin-bottom: 20px }
+.mb40 { margin-bottom: 40px }
+.pb0 { padding-bottom: 0 !important }
+.pb5 { padding-bottom: 5px }
+.pb10 { padding-bottom: 10px }
+.pb15 { padding-bottom: 15px }
+.pb20 { padding-bottom: 20px }
+.pb30 { padding-bottom: 30px }
+.pb50 { padding-bottom: 50px }
+.pb100 { padding-bottom: 100px }
+.pb150 { padding-bottom: 150px }
+
+// left
+.ml0 { margin-left: 0 !important }
+.ml5 { margin-left: 5px }
+.ml10 { margin-left: 10px }
+.ml15 { margin-left: 15px }
+.ml20 { margin-left: 20px }
+.ml50 { margin-left: 50px }
+.pl0 { padding-left: 0 !important }
+.pl5 { padding-left: 5px }
+.pl10 { padding-left: 10px }
+.pl10i { padding-left: 10px !important }
+.pl15 { padding-left: 15px }
+.pl15i { padding-left: 15px !important }
+.pl20 { padding-left: 20px }
+.pl50 { padding-left: 50px }
+.pl50i { padding-left: 50px !important }
+
+// right
+.mr0 { margin-right: 0 !important }
+.mr5 { margin-right: 5px }
+.mr-5 { margin-right: -5px }
+.mr10 { margin-right: 10px }
+.mr15 { margin-right: 15px }
+.mr20 { margin-right: 20px }
+.mr30 { margin-right: 30px }
+.pr0 { padding-right: 0 !important }
+.pr5 { padding-right: 5px }
+.pr10 { padding-right: 10px }
+.pr15 { padding-right: 15px }
+.pr20 { padding-right: 20px }
+.pr50 { padding-right: 50px }
+
+.mt2 { margin-top: 2px }
+.mt3 { margin-top: 3px }
+.mt7 { margin-top: 7px }
+.mb7 { margin-bottom: 7px }
+.mt25 { margin-top: 25px }
+.mb25 { margin-bottom: 25px }
+.mt30 { margin-top: 30px }
+.mb30 { margin-bottom: 30px }
+.mb36 { margin-bottom: 36px }
+.mt40 { margin-top: 40px }
+.mt45 { margin-top: 45px }
+.mb40 { margin-bottom: 40px }
+.mt50 { margin-top: 50px }
+.mb50 { margin-bottom: 50px }
+.mb100 { margin-bottom: 100px }
+.mt100 { margin-top: 100px }
+.mb150 { margin-bottom: 150px }
+.mb170 { margin-bottom: 170px }
+.mt170 { margin-top: 170px }
+.mb200 { margin-bottom: 200px }
+.mt200 { margin-top: 200px }
+.pt50 { padding-top: 50px }
+.pb50 { padding-bottom: 50px }
+.pb100 { padding-bottom: 100px }
+.pt100 { padding-top: 100px }
+.pb200 { padding-bottom: 200px }
+.pt200 { padding-top: 200px }
+.mt-20 { margin-top: -20px;}
+.mt-50 { margin-top: -50px;}
+.mt-15 { margin-top: -15px; }
+
+.text-insignificant { opacity: .7; }
+.text-barely-visible { opacity: .3; }
+
+.super-aligner {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.form-inline {
+  display: inline-block;
+  width: auto;
+  margin: 0 5px;
+}
+
+.ml3 {
+  margin-left: 3px;
+}
+
+.tt150 {
+  position: absolute;
+  top: 10px;
+  width: 150px;
+}
+
+.draggable-cursor {
+  cursor: grab;
+}
+
+.text-done {
+  text-decoration: line-through;
+}
+
+.alert-thin {
+  border-width: 4px;
+}
+
+.no-shadow {
+  box-shadow: none;
+}
+
+.break-words {
+  word-break: break-all;
+}
+
+.intl-tel-input {
+  display: block;
+}
+
+.intl-tel-input .country-list {
+  z-index: 3;
+}
+
+.iti-flag {
+  background-image: url('/assets/images/flags.png');
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    background-image: url('/assets/images/flags@2x.png');
+  }
+}
+
+.ovhid {
+  overflow: hidden;
+}
+
+.no-rad {
+  border-radius: 0 !important;
+}

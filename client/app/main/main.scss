@@ -1,0 +1,130 @@
+.hero-unit {
+  background-image: url("/assets/images/vintage-bg.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  padding: 0;
+  height: 85vh;
+  overflow: hidden;
+  min-height: 500px;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    top: 0;
+    left: 0;
+  }
+}
+.hero-text {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  position: relative;
+  background-color: transparent;
+  // md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md-select-value.md-select-placeholder {
+  //   color: #fff;
+  //   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  //   font-size: 18px;
+  // }
+  //
+  // md-select .md-select-value {
+  //   font-size: 18px;
+  //   color: #fff;
+  // }
+}
+
+.why {
+  background-color: #ECF4F0;
+  line-height: 1.5;
+  border-radius: 2px;
+}
+
+.numbers h4 {
+  font-size: 13pt;
+}
+
+.numbers h2 {
+  color: $c1;
+  font-size: 45pt;
+  font-weight: bold;
+}
+
+.theme-white .slider-stick {
+  border-top: 2px solid rgba(255, 255, 255, .3);
+}
+
+.hero-text {
+  .main-text {
+    font-size: 50px;
+  }
+
+  .sub-text {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-text {
+    .main-text {
+      font-size: 35px;
+    }
+
+    .sub-text {
+      font-size: 20px;
+    }
+  }
+}
+
+.how-area {
+  background-color: #FCFCFC;
+  .tree {
+    background: #ccc;
+    width: 1px;
+    height: 805px;
+    position: absolute;
+    left: 50%;
+    .branch {
+      $branch-width: 70px;
+      margin-bottom: 200px;
+      height: 1px;
+      width: $branch-width;
+      background: #ccc;
+      &.branch-l {
+        margin-left: -$branch-width;
+      }
+    }
+  }
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .how-area {
+    .tree {
+      display: none;
+    }
+
+    .tree-explanation {
+      text-align: center !important;
+    }
+  }
+  .toplanti {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .why {
+    margin-top: 30px;
+  }
+}
+
+.super-aligner {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}

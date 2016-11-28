@@ -1,0 +1,32 @@
+<div class="modal fade" role="dialog" id="banner-modal">
+  <div class="modal-dialog modal-lg" style="transform: translate(0, 0);">
+    <div class="modal-content" style="background: #fff;">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-4 hidden-xs">
+            <img class="img-responsive" ng-src="/assets/images/banner-image.jpg" alt="banner-image">
+          </div>
+          <div class="col-sm-8">
+            <img ng-if="locale === 'tr'" class="img-responsive pull-right banner-badge-image" ng-src="/assets/images/banner-badge-tr.png" alt="banner-image">
+            <img ng-if="locale === 'en'" class="img-responsive pull-right banner-badge-image" ng-src="/assets/images/banner-badge-en.png" alt="banner-image">
+            <h1 class="mt10 banner-title">WINVESTMENT</h1>
+            <h4 class="banner-subtitle" translate>ARADIĞINIZ GAYRİMENKULU BİZ BULALIM</h4>
+            <hr>
+            <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;<span translate>Mevcut Tüm İlanların Sizin Yerinize İncelenmesi</span></p>
+            <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;<span translate>Kriterlerinize Uygun En Doğru Opsiyonların Çıkarılması</span></p>
+            <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;<span translate>Yer Ziyaretleri Dahil Tüm Randevularınızın Organizasyonu</span></p>
+            <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;<span translate>Detaylı ve Şeffaf Finansal Rapor</span></p>
+            <p>&nbsp;&nbsp;&nbsp;&bull;&nbsp;<span translate>24 Saat İçerisinde Dönüş</span></p>
+            <hr>
+            <h5 class="text-center" translate>SİZ İSTEKLERİNİZİ BELİRTİN, UZMANLARIMIZ ÇALIŞSIN</h5>
+            <div class="row">
+              <div class="col-xs-12 text-center">
+                <md-button class="md-raised md-primary" style="width: 170px;" ng-click="close()"><span translate>HEMEN BAŞLAYIN</span></md-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

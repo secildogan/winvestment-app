@@ -1,0 +1,230 @@
+<navbar></navbar>
+
+<div class="container pt20 pb50">
+  <form id="submissionForm" name="submissionForm" ng-submit="sendForm(submissionForm)">
+    <p class="mb30"><span class="fa fa-exclamation-circle text-insignificant"></span>&nbsp;<span translate>Formda ilerleyebilmek için lütfen tüm alanları doldurunuz.</span></p>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="row">
+          <div class="col-sm-12">
+            <md-input-container class="md-block">
+              <label>{{ specs.realty_types.label }}</label>
+              <md-select ng-model="data.realty_types" multiple required>
+                <md-option ng-value="a.key" ng-repeat="a in specs.realty_types.vals">{{ a.label }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <md-input-container class="md-block">
+              <label translate>Şehir</label>
+              <md-select ng-model="data.city" required>
+                <md-option ng-value="c" ng-repeat="c in specs.cities">{{ c }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <md-input-container class="md-block">
+              <label translate>Semt</label>
+              <md-select ng-disabled="!allDistricts || !allDistricts.length" ng-model="data.districts" multiple required>
+                <md-option ng-value="p" ng-repeat="p in allDistricts">{{ p }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <md-input-container class="md-block">
+              <label translate>Mahalle</label>
+              <md-select ng-disabled="!allNeighborhoods || !allNeighborhoods.length" ng-model="data.neighborhoods" multiple required>
+                <span ng-repeat="item in allNeighborhoods">
+                  <md-option ng-value="'::' + item.district"><span class="text-insignificant">{{ item.district }}</span></md-option>
+                <md-option class="subitem" ng-value="n" ng-repeat="n in item.neighborhoods">{{ n }}</md-option>
+                </span>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <md-input-container class="md-block">
+              <label>{{ specs.room_counts.label }}</label>
+              <md-select ng-model="data.room_counts" multiple required>
+                <md-option ng-value="r" ng-repeat="r in specs.room_counts.vals">{{ r }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <md-input-container class="md-block mb0">
+              <label for="pricemin">Min. <span translate>fiyat</span> (TL)</label>
+              <input name="pricemin" id="pricemin" type="number" required ng-model="data.price.min" ng-max="data.price.max" placeholder="400.000">
+            </md-input-container>
+          </div>
+          <div class="col-xs-6">
+            <md-input-container class="md-block mb0">
+              <label for="pricemax">Max. <span translate>fiyat</span> (TL)</label>
+              <input name="pricemax" id="pricemax" type="number" required ng-model="data.price.max" ng-min="data.price.min" placeholder="1.000.000">
+            </md-input-container>
+          </div>
+          <div class="col-xs-12">
+            <div ng-messages="submissionForm.pricemin.$error" role="alert">
+              <div class="text-danger mb10" style="margin-top: -15px;" ng-message="max" ng-class="{ 'hidden': !submissionForm.pricemin.$error.max }" translate>Lütfen geçerli fiyat aralığı girin.</div>
+            </div>
+            <div ng-messages="submissionForm.pricemax.$error" role="alert">
+              <div class="text-danger mb10" style="margin-top: -15px;" ng-message="min" ng-class="{ 'hidden': !submissionForm.pricemax.$error.min }" translate>Lütfen geçerli fiyat aralığı girin.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-sm-12">
+            <div class="pb20 pt20 mt20">
+              <label class="slider-label" style="top: -25px; left: 2px; font-size: 14px;" translate>Fiyat aralığı</label>
+              <hr class="slider-stick">
+              <div range-slider class="ng-range-slider" min="0" max="6000000" model-min="data.price.min" model-max="data.price.max" step="50000"></div>
+              <span>{{ addDots(data.price.min) }} &#8378;</span>
+              <span class="pull-right">{{ addDots(data.price.max) }} &#8378;</span>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="row">
+          <div class="col-xs-6">
+            <md-input-container class="md-block mb0">
+              <label for="areamin"><span translate>Minimum</span> m&#xB2;</label>
+              <input name="areamin" id="areamin" type="number" required ng-model="data.area.min" ng-max="data.area.max" placeholder="300">
+            </md-input-container>
+          </div>
+          <div class="col-xs-6">
+            <md-input-container class="md-block mb0">
+              <label for="areamax"><span translate>Maksimum</span> m&#xB2;</label>
+              <input name="areamax" id="areamax" type="number" required ng-model="data.area.max" ng-min="data.area.min" placeholder="1000">
+            </md-input-container>
+          </div>
+          <div class="col-xs-12">
+            <div ng-messages="submissionForm.areamin.$error" role="alert">
+              <div class="text-danger mb10" style="margin-top: -15px;" ng-message="max" ng-class="{ 'hidden': !submissionForm.areamin.$error.max }" translate>Lütfen geçerli bir aralık girin.</div>
+            </div>
+            <div ng-messages="submissionForm.areamax.$error" role="alert">
+              <div class="text-danger mb10" style="margin-top: -15px;" ng-message="min" ng-class="{ 'hidden': !submissionForm.areamax.$error.min }" translate>Lütfen geçerli bir aralık girin.</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-sm-12">
+            <div class="pb20 pt50 mt10">
+              <label class="slider-label" style="top: -50px; left: 2px; font-size: 14px;">m&#xB2;</label>
+              <hr class="slider-stick" style="margin-top: -25px;">
+              <div range-slider class="ng-range-slider" min="0" max="500" model-min="data.area.min" model-max="data.area.max" step="10"></div>
+              <span>{{ data.area.min }} m&#xB2;</span>
+              <span class="pull-right">{{ data.area.max }} m&#xB2;</span>
+            </div>
+          </div> -->
+
+        <md-button class="md-raised md-primary pull-right mt-10" ng-click="showStep(2)" ng-if="!step_2" ng-disabled="!canSeeStep2"><span translate>Devam</span></md-button>
+
+
+      </div>
+      <div class="col-sm-6 blurry" ng-class="{ 'sharp': step_2 }">
+
+        <div class="row">
+          <div class="col-sm-4 pl10 pr10 mb20">
+            <md-input-container class="md-block">
+              <label translate>{{ specs.floors.label }}</label>
+              <md-select ng-model="data.floors" multiple required>
+                <md-option ng-value="f.key" ng-repeat="f in specs.floors.vals">{{ f.label }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div class="col-sm-4 pl10 pr10 mb20">
+            <md-input-container class="md-block">
+              <label translate>{{ specs.building_types.label }}</label>
+              <md-select ng-model="data.building_types" multiple required>
+                <md-option ng-value="i.key" ng-repeat="i in specs.building_types.vals">{{ i.label }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+          <div class="col-sm-4 pl10 pr10 mb20">
+            <md-input-container class="md-block">
+              <label translate>{{ specs.building_ages.label }}</label>
+              <md-select ng-model="data.building_ages" multiple required>
+                <md-option ng-value="item.key" ng-repeat="item in specs.building_ages.vals">{{ item.label }}</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <fieldset class="demo-fieldset md-padding">
+              <legend class="demo-legend mb0">{{ specs.musts.label }}</legend>
+              <div layout="row" layout-wrap flex>
+                <div flex-xs flex="100">
+                  <md-checkbox aria-label="Select All" ng-checked="isAllChecked('musts')" md-indeterminate="isIndeterminate('musts')" ng-click="toggleAll('musts')" required>
+                    <span ng-if="isAllChecked('musts')"><strong translate>Temizle</strong></span>
+                    <span ng-if="!isAllChecked('musts')"><strong translate>Hepsi</strong></span>
+                  </md-checkbox>
+                </div>
+                <div class="demo-select-all-checkboxes pl10i" flex="33" ng-repeat="item in specs.musts.vals">
+                  <md-checkbox ng-checked="exists(item.key, data.musts)" ng-click="toggle(item.key, data.musts)">
+                    {{ item.label }}
+                  </md-checkbox>
+                </div>
+              </div>
+            </fieldset>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <fieldset class="demo-fieldset md-padding mt30">
+              <legend class="demo-legend mb0" translate>Satın Almayı Düşündüğünüz Tarih Aralığı</legend>
+              <div class="row text-center">
+                <div class="col-xs-6">
+                  <h5 translate>Başlangıç tarihi</h5>
+                  <md-datepicker md-no-ink ng-model="data.dates.min" md-placeholder="Seçiniz" md-min-date="today" md-open-on-focus></md-datepicker>
+                </div>
+                <div class="col-xs-6">
+                  <h5 translate>Bitiş tarihi</h5>
+                  <md-datepicker md-no-ink ng-model="data.dates.max" md-placeholder="Seçiniz" md-min-date="data.dates.min" md-open-on-focus></md-datepicker>
+                </div>
+              </div>
+            </fieldset>
+
+
+            <md-button class="md-raised md-default pull-right" ng-click="clearFields()" ng-if="!step_3 && step_2"><span translate>Formu temizle</span></md-button>
+            <md-button class="md-raised md-primary pull-right" ng-click="showStep(3)" ng-if="!step_3 && step_2" ng-disabled="!canSeeStep3"><span translate>Devam</span></md-button>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-3 blurry" ng-class="{ 'sharp': step_3 }">
+
+        <div class="row">
+          <div class="col-sm-12">
+            <md-input-container class="md-block">
+              <label translate>Ek Açıklamalar</label>
+              <textarea ng-model="data.user_notes" rows="4" md-select-on-focus></textarea>
+            </md-input-container>
+
+            <md-button class="md-raised md-default pull-right" ng-if="step_3" ng-click="clearFields()"><span translate>Formu temizle</span></md-button>
+            <md-button class="md-raised md-primary pull-right" id="submitButton" type="submit" ng-if="step_3" ng-disabled="!canFinish"><span translate>Gönder</span></md-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+<footer></footer>
+
+<must-login-modal></must-login-modal>

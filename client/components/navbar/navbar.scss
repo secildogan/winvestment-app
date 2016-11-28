@@ -1,0 +1,76 @@
+.logo-win {
+  color: $c1;
+}
+
+.locale-select md-content {
+  margin-top: 50px;
+}
+
+.profile-select {
+  .md-select-value.md-select-placeholder {
+    color: #333 !important;
+  }
+}
+
+.nav.navbar-nav .active {
+  a:not(.md-button) {
+    background: transparent;
+    // color: #fbfbfb !important;
+    box-shadow: 0px -2px 0px $c1 inset;
+  }
+  a:not(.md-button):hover {
+    background-color: transparent;
+  }
+  a:not(.md-button):focus {
+    background-color: transparent;
+  }
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #111;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #333;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+  color: #111;
+  &:hover {
+    color: #111;
+  }
+}
+
+.navbar-default {
+  border: none;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+}
+
+.banner-badge-image {
+  width: 120px;
+}
+
+.banner-title {
+  font-size: 48px;
+  font-weight: 200;
+}
+
+.banner-subtitle {
+  font-size: 17.5px;
+}
+
+@media(max-width: 768px) {
+  .banner-badge-image {
+    width: 60px;
+  }
+
+  .banner-title {
+    font-size: 32px;
+  }
+
+  .banner-subtitle {
+    font-size: 15px;
+  }
+}

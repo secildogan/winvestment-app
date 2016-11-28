@@ -1,0 +1,40 @@
+<navbar></navbar>
+
+<section class="admin-dashboard">
+  <div class="container pb50 pt20">
+    <md-content class="md-padding">
+      <md-nav-bar md-selected-nav-item="'submissions'" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="/admin/submissions" name="submissions"><span translate>Talepler</span></md-nav-item>
+        <md-nav-item md-nav-href="/admin/users" name="users"><span translate>Kullanıcılar</span></md-nav-item>
+        <md-nav-item md-nav-href="/admin/contacts" name="contacts"><span translate>İletişim formları</span></md-nav-item>
+      </md-nav-bar>
+    </md-content>
+
+    <ul style="list-style: none;" class="list-group row">
+      <li class="col-sm-6" ng-repeat="s in data.items.items" ng-click="submissionDetails(s)">
+        <span class="list-group-item">
+          <span class="text-muted pull-right" am-time-ago="s.created_at"></span>
+          <strong>{{ s.city }}</strong>&nbsp;<span class="text-insignificant">(<span ng-repeat="d in s.districts.slice(0, 4)">{{ d }}<span ng-hide="$last">,&nbsp;</span></span><span ng-show="s.districts.length > 4">...</span>)</span><br>
+          <span class="text-insignificant">{{ addDots(s.price.min) }} &#8378; - {{ addDots(s.price.max) }} &#8378;</span><br>
+          <span class="text-insignificant">{{ s.by.name }}</span>
+        </span>
+      </li>
+    </ul>
+
+    <div class="text-center" ng-if="data.items.found">
+      <uib-pagination total-items="data.items.found"
+      items-per-page="data.items.count"
+      ng-model="data.params.page"
+      ng-change="search({ page: data.params.page })"
+      max-size="4"
+      boundary-links="true"
+      rotate="false"
+      first-text="{{ 'İlk' | translate }}"
+      previous-text="{{ 'Önceki' | translate }}"
+      next-text="{{ 'Sonraki' | translate }}"
+      last-text="{{ 'Son' | translate }}"></uib-pagination>
+    </div>
+  </div>
+</section>
+
+<admin-submission-details-modal submission="selected"></admin-submission-details-modal>

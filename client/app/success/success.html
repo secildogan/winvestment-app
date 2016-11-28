@@ -1,0 +1,52 @@
+<navbar></navbar>
+
+<div class="container pt50 pb50">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h3 class="md-success"><span class="fa fa-check-square-o"></span>&nbsp;<span translate>Talep formunuz elimize ulaştı!</span></h3>
+      <h5 translate>En kısa zamanda uzmanlarımız gerekli çalışmaları yapacak ve size dönüş sağlanacaktır.</h5>
+      <br>
+    </div>
+  </div>
+
+  <div class="panel" style="box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2 class="mt5" translate>Detaylar</h2>
+        </div>
+
+        <div class="col-xs-6">
+          <h5><span class="text-insignificant"><span translate>Oluşturulma tarihi</span>:</span> {{ submission.created_at | amDateFormat:'DD.MM.YYYY | HH:MM' }} </h5>
+          <h5><span class="text-insignificant"><span translate>Şehir</span>:</span> {{ submission.city }}</h5>
+          <h5><span class="text-insignificant"><span translate>Semt</span>:</span> {{ array2String(submission.districts) }}</h5>
+          <h5>
+            <span class="text-insignificant">
+              <span translate>Mahalle</span>:
+              <span ng-repeat=" (k, v) in submission.neighborhoods">
+                {{ k }}&nbsp;<span class="text-insignificant">(<span ng-if="v.indexOf('::' + k) > -1" translate>Tümü</span><span ng-if="v.indexOf('::' + k) === -1"><span ng-repeat="n in v">{{ n }}<span ng-if="!$last">,&nbsp;</span></span></span>)<span ng-if="!$last">, </span></span>
+              </span>
+            </span>
+          </h5>
+          <h5><span class="text-insignificant"><span>{{ specs.realty_types.label }}</span>:</span> <span ng-repeat="d in submission.realty_types">{{ getLabelByKey('realty_types', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+          <h5><span class="text-insignificant"><span>{{ specs.room_counts.label }}</span>:</span> <span ng-repeat="d in submission.room_counts">{{ d }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+          <h5><span class="text-insignificant"><span translate>Fiyat aralığı</span>:</span> {{ addDots(submission.price.min) }} &#8378; - {{ addDots(submission.price.max) }} &#8378;</h5>
+          <h5><span class="text-insignificant">m:&#xB2;</span> {{ submission.area.min }} m&#xB2; - {{ submission.area.max }} m&#xB2;</h5>
+        </div>
+
+        <div class="col-xs-6">
+          <h5><span class="text-insignificant"><span>{{ specs.floors.label }}</span>:</span><span class="text-insignificant"></span> <span ng-repeat="d in submission.floors">{{ getLabelByKey('floors', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+          <h5><span class="text-insignificant"><span>{{ specs.musts.label }}</span>:</span><span class="text-insignificant"></span> <span ng-repeat="d in submission.musts">{{ getLabelByKey('musts', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+          <h5><span class="text-insignificant"><span>{{ specs.building_types.label }}</span>:</span><span class="text-insignificant"></span> <span ng-repeat="d in submission.building_types">{{ getLabelByKey('building_types', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+          <h5><span class="text-insignificant"><span>{{ specs.building_ages.label }}</span>:</span><span class="text-insignificant"></span> <span ng-repeat="d in submission.building_ages">{{ getLabelByKey('building_ages', d) }}<span ng-hide="$last">,&nbsp;</span></span></h5>
+          <h5><span class="text-insignificant"><span translate>Tarih aralığı</span>:</span> {{ submission.dates.min | amDateFormat:'DD.MM.YYYY' }} - {{ submission.dates.max | amDateFormat:'DD.MM.YYYY' }}</h5>
+          <h5><span class="text-insignificant"><span translate>Ek açıklamalar</span>:</span> {{ submission.user_notes }}</h5>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <md-button href="/" class="md-primary md-raised ml0 pull-right"><span translate>Anasayfaya dön</span></md-button>
+</div>
+
+<footer></footer>

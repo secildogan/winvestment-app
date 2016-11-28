@@ -1,0 +1,83 @@
+<navbar></navbar>
+<section class="application-form pt50 pb50">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+        <h1 class="mb50" translate>Başvuru Formu</h1>
+        <form name="jobform" ng-submit="sendApplication(jobform)" novalidate>
+          <div class="row">
+            <div class="col-sm-12">
+              <md-input-container class="md-block">
+                <label translate>Adınız, Soyadınız</label>
+                <input required type="text" name="name" ng-model="application.name" />
+
+                <div ng-messages="jobform.name.$error" role="alert">
+                  <div ng-message="required" ng-class="{ 'hidden': !jobform.name.$error.required }" translate>Lütfen adınızı ve soyadınızı yazınız.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <md-input-container class="md-block">
+                <label translate>Email adresiniz</label>
+                <input required type="email" name="email" ng-model="application.email" ng-pattern="/^.+@.+\..+$/" />
+
+                <div ng-messages="jobform.email.$error" role="alert">
+                  <div ng-message="pattern" ng-class="{ 'hidden': !jobform.email.$error.pattern }" translate>Lütfen geçerli bir email adresi giriniz.</div>
+                  <div ng-message="required" ng-class="{ 'hidden': !jobform.email.$error.required }" translate>Lütfen email adresinizi giriniz.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <md-input-container class="md-block">
+                <label translate>Telefon numaranız</label>
+                <input type="text" name="phone" ng-model="application.phone" />
+              </md-input-container>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <md-input-container class="md-block">
+                <label translate>Okuduğunuz/mezun olduğunuz üniversite</label>
+                <input type="text" name="university" ng-model="application.university" />
+              </md-input-container>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <md-input-container class="md-block">
+                <label translate>Üniversitede okuduğunuz bölüm</label>
+                <input type="text" name="department" ng-model="application.department" />
+              </md-input-container>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <md-input-container class="md-block">
+                <label translate>Ön yazı</label>
+                <textarea ng-model="application.message" md-maxlength="2000" rows="3" name="message" md-select-on-focus></textarea>
+              </md-input-container>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <md-button class="md-raised md-primary pull-right" type="submit"><span translate>Gönder</span></md-button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+<footer></footer>
